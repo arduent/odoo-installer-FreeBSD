@@ -83,6 +83,18 @@ pkg install -y npm
 npm install less
 npm install clean-css
 
+echo 'postgresql_enable=YES' >> /etc/rc.conf
+sudo su - postgres -c "initdb -D /var/db/postgres/data11"
+service postgresql start
+sudo su - postgres -c "createuser -s odoo"
+
+openssl dhparam -dsaparam -out /etc/ssl/dhparam.pem 4096
+
+ln -s /usr/local/bin/python3.7 /usr/local/bin/python3
+
+echo 'nginx_enable=YES' >> /etc/rc.conf
+
+
 git clone https://github.com/odoo/odoo.git
 cd odoo ; git branch
 
