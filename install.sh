@@ -71,6 +71,11 @@ pkg install -y py37-werkzeug
 pkg install -y py37-xlrd
 pkg install -y py37-xlwt
 
+#for l10n-dominicana
+pkg install -y py37-openpyxl
+pkg install -y py37-simplejson
+pkg install -y py37-XlsxWriter
+pkg install -y py37-zeep
 
 pkg install -y wkhtmltopdf 
 
