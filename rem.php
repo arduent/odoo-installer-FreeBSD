@@ -1,4 +1,6 @@
 <?php
+//remove all packages
+//pkg info > rem.lst
 $t=file('rem.lst');
 foreach ($t as $v)
 {
