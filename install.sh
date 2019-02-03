@@ -3,6 +3,7 @@
 pkg update 
 pkg install -y sudo
 pkg install -y git
+pkg install -y php72
 pkg install -y postgresql11-server
 pkg install -y postgresql11-client
 
