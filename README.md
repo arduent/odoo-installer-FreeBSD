@@ -11,6 +11,9 @@ packages built for FreeBSD 12.0-RELEASE-p2 GENERIC  amd64
 prerequisites:
 
 ```
+/etc/make.conf: DEFAULT_VERSIONS+= python=3.7 pgsql=11
+
+install these ports:
 /usr/ports/ports-mgmt/pkg
 /usr/ports/security/ca_root_nss
 
