@@ -9,13 +9,7 @@ rcvar="odoo_enable"
 pidfile="/var/run/${name}.pid"
 odoo_path="/usr/home/freebsd/odoo-installer-FreeBSD/odoo"
 odoo_opts="--syslog --config ${odoo_path}/odoo.conf --addons-path=addons,altaddons,l10n-dominicana"
-start_precmd="switch_user"
 start_cmd="cd ${odoo_path}; sudo -u odoo ./odoo-bin ${odoo_opts} &"
-
-switch_user()
-{
-	_user="odoo"
-}
 
 load_rc_config $name
 run_rc_command "$1"
