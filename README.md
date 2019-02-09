@@ -27,9 +27,3 @@ and update pkg:
 # pkg update -f
 ```
 
-
-to run odoo,
-
-```
-# ./odoo-bin --config=odoo.conf --addons-path=addons,altaddons,l10n-dominicana
-```
