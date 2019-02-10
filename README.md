@@ -36,7 +36,7 @@ to use init script, copy contents of odoo directory to /home/odoo, ie:
 ```
 
 B2 BackBlaze backup
-install packages using b2-install.sh
+install packages using install-b2.sh
 get your accountid/keyid and application id from backblaze.com
 
 authorize and create a bucket:
