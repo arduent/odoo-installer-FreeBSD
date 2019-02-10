@@ -4,3 +4,4 @@ node_modules/
 package-lock.json
 rem.lst
 odoo.bak
+backuplog.txt

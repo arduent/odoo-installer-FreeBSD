@@ -27,3 +27,25 @@ and update pkg:
 # pkg update -f
 ```
 
+to use init script, copy contents of odoo directory to /home/odoo, ie:
+
+```
+# chown -R odoo:odoo odoo
+# cd odoo
+# cp -a . /home/odoo
+```
+
+B2 BackBlaze backup
+install packages using b2-install.sh
+get your accountid/keyid and application id from backblaze.com
+
+authorize and create a bucket:
+
+```
+# b2 authorize-account [<accountIdOrKeyId>] [<applicationKey>]
+# b2 create-bucket --lifecycleRules '[{"daysFromHidingToDeleting": 30,"daysFromUploadingToHiding": null,"fileNamePrefix": "backup/"}]' odoo-db-backup allPrivate
+```
+
+Run the b2-backup.sh using cron, hourly recommended. NOTE: the retention settings are 30 days. The backup script will create a new file each day. So, there will be 24*31 files.  (Adjust to your needs).
+
+

@@ -1,17 +1,39 @@
 #!/bin/sh
+#
+# PROVIDE: odoo
+# REQUIRE: sshd
+# KEYWORD: shutdown
 
 . /etc/rc.subr
 
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:
 name="odoo"
 desc="Odoo is a platform that companies can use to manage."
 rcvar="odoo_enable"
-pidfile="/var/run/${name}.pid"
-odoo_path="/usr/home/freebsd/odoo-installer-FreeBSD/odoo"
-odoo_opts="--syslog --config ${odoo_path}/odoo.conf --addons-path=addons,altaddons,l10n-dominicana"
-start_cmd="cd ${odoo_path}; sudo -u odoo ./odoo-bin ${odoo_opts} &"
+pidfile="/var/run/odoo/${name}.pid"
+odoo_opts="--pidfile=${pidfile} --syslog --config odoo.conf --addons-path=addons,altaddons,l10n-dominicana"
+command="./odoo-bin"
+su_cmd="/usr/bin/su"
+start_cmd='${su_cmd} -l odoo -c "${command} ${odoo_opts} &"'
+stop_cmd="odoo_stop"
+status_cmd="odoo_status"
+
+odoo_stop() {
+	if [ -e "${pidfile}" ]; then
+		kill -s TERM `cat ${pidfile}`
+	else
+		echo "${name} is not running"
+	fi
+}
+
+odoo_status() {
+	if [ -e "${pidfile}" ]; then
+		echo "${name} is running as pid `cat ${pidfile}`"
+	else
+		echo "${name} is not running"
+	fi
+}
+
 
 load_rc_config $name
 run_rc_command "$1"
-
 

@@ -99,7 +99,9 @@ git clone https://github.com/odoo/odoo.git
 cd odoo ; git branch
 
 pw groupadd odoo
-pw useradd -n odoo -g odoo -s /nonexistent -m -L daemon 
+pw useradd -n odoo -g odoo -s /bin/sh -m -L daemon 
 cp odoo.init /usr/local/etc/rc.d/odoo
 chmod 700 /usr/local/etc/rc.d/odoo
 sysrc odoo_enable="YES"
+mkdir /var/run/odoo
+chown odoo:odoo /var/run/odoo
